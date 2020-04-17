@@ -1,8 +1,8 @@
-# TODO LIST v.2
+# TODO LIST v.3
 
-Adding Bootstrap theme and users capabilities.
+Adding Objects.
 
-1. Create a database named todo_php2
+1. Create a database named todo_php3
 2. Import the **database.sql** file to create the table
 3. Create a user 'test' with password 'test' and grand all priviledges 
 on this database

@@ -9,3 +9,7 @@ $conn->exec($sql);
 
 header("Location: index.php");
 die();
+
+
+// $task = new Task(['name] => $task, 'user_id' => $user_id]);
+// $task->save();

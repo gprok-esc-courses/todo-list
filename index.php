@@ -1,6 +1,10 @@
 <?php
 require_once ("check_user.php");
 require_once ("page_head.php");
+require_once("database.php");
+require_once ("task.php");
+
+$tasks = Task::find_completed($user_id);
 ?>
 
 <div class="jumbotron">
@@ -11,19 +15,14 @@ require_once ("page_head.php");
     </form>
 </div>
 
-<?php
-require_once("database.php");
-
-$sql = "SELECT * FROM tasks WHERE completed=0 AND user_id=$user_id";
-$result = $conn->query($sql, PDO::FETCH_ASSOC);
-
-echo "<ol>";
-foreach ($result as $row) {
-    echo "<li>" . $row['name'] .
-        " <a href='complete_task.php?id=" . $row['id'] . "'><i class=\"fas fa-check\"></i></a> <a href='delete_task.php?id=" . $row['id'] . "'><i class='far fa-trash-alt'></i></a></li>";
-}
-echo "</ol>";
-?>
+<ol>
+<?php foreach ($tasks as $task) { ?>
+    <li> <?=$task->name;?>
+    <a href='complete_task.php?id=<?=$task-id;?>'><i class='fas fa-check'></i></a>
+    <a href='delete_task.php?id=<?=$task-id;?>'><i class='far fa-trash-alt'></i></a>
+    </li>
+<?php } ?>
+</ol>
 
 <?php
 require_once("page_footer.php");
